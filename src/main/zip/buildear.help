@@ -1,0 +1,28 @@
+ buildear [-h] [-v] [-s] [-a pathToAliases] -ear uri [-o outputEarFile] -p projectDir
+ Usage:
+ 	-h (optional) prints this usage
+ 	-x (optional) overwrites the specified output file if it exists.
+ 	-a (optional) specify a properties file containing aliases for DTL library locations
+ 	-v (optional) validate project before creating archive. Aborts on
+ 		errors. Warnings are ignored.
+ 	-s (optional) saves the project after the archive is created
+ 		(project must be writable
+ 	-ear specifies the uri for Enterprise Archive Resource to build
+ 		the ear from. The uri of EAR resource is its project path plus
+ 		'.archive'
+ 	-o (optional) specifies the output file for the ear. If provided, it
+ overrides the value of the 'File Location' field in the EAR resource.
+ 
+ 	-p specifies project
+ 
+ 
+ If you don't specify an '-ear' argument, the tool will create a
+ full project ear packaging all adapters in their own Adapter Archives,
+ and all process definitions in a single Process Archive. Note this
+ feature is not implemented for packaging other types of Archives. If your
+ project resources that need to be packaged in their own archives, you
+ will need to build the EAR resource in Designer, and then use this tool
+ to create the ear file
+ 
+ Aliases file format is:
+ NameOfTheAlias=/path/to/the/library

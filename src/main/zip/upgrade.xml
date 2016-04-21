@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin-upgrade
+        xmlns="http://www.urbancode.com/UpgradeXMLSchema_v1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <migrate to-version="2">
+    <migrate-command name="Build Tibco Enterprise Archive (.ear)">
+    </migrate-command>
+    <migrate-command name="Build Multiple Tibco Enterprise Archives">
+    </migrate-command>
+    <migrate-command name="Deploy Tibco Enterprise Archive (.ear)">
+    </migrate-command>
+    <migrate-command name="Deploy Multiple Tibco Enterprise Archives">
+    </migrate-command>
+  </migrate>
+
+  <migrate to-version="3">
+    <migrate-command name="Build Tibco Enterprise Archive (.ear)">
+    </migrate-command>
+    <migrate-command name="Build Multiple Tibco Enterprise Archives">
+    </migrate-command>
+    <migrate-command name="Deploy Tibco Enterprise Archive (.ear)">
+    </migrate-command>
+    <migrate-command name="Deploy Multiple Tibco Enterprise Archives">
+    </migrate-command>
+    <migrate-command name="Create or update EMS Queues">
+    </migrate-command>
+  </migrate>
+</plugin-upgrade>

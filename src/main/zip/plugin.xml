@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns='http://www.urbancode.com/PluginXMLSchema_v1' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <header>
+    <identifier id='com.urbancode.air.plugin.Tibco' version='3' name='Tibco Business Works Plugin' />
+    <description>The Tibco Business Works integration.</description>
+    <tag>Middleware/Enterprise Service Bus/Tibco</tag>
+  </header>
+  <step-type name='Build Tibco Enterprise Archive (.ear)'>
+    <description>Build an ear file</description>
+    <properties>
+      <property name='username' required='true'>
+        <property-ui type='textBox' label='Username' description='The username to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/username}' />
+      </property>
+      <property name='password'>
+        <property-ui type='secureBox' label='Password' description='The password to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/password}' />
+      </property>
+      <property name='passwordscript'>
+        <property-ui type='textBox' label='Password Script' description='If a property or script should be used to retrieve the password, leave it blank and put the property or script here.' default-value='${p:resource/Tibco Business Works Plugin/passwordscript}' />
+      </property>
+      <property name='appmanageExec'>
+        <property-ui type='textBox' label='AppManager Path' description='If the AppManage command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/appmanageExec}' />
+      </property>
+      <property name='buildearExec'>
+        <property-ui type='textBox' label='buildear Path' description='If the buildear command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/buildearExec}' />
+      </property>
+      <property name='archive' required='true'>
+        <property-ui type='textBox' label='Archive File' description='The path and name of the archive to generate the .ear from.' />
+      </property>
+      <property name='earfile' required='true'>
+        <property-ui type='textBox' label='Ear File' description='The path and name of the Tibco Enterprise Archive file to generate. Should end in .ear' />
+      </property>
+      <property name='project' required='true'>
+        <property-ui type='textBox' label='Project' description='The path and name of the Tibco Project to integrate into the .ear' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[ 
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else { 
+ properties.put("Status", "Success"); 
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_buildear.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+  <step-type name='Build Multiple Tibco Enterprise Archives'>
+    <description>Build multiple .ear files by specifying the project path the archive files reside in. This will search recursively.</description>
+    <properties>
+      <property name='username' required='true'>
+        <property-ui type='textBox' label='Username' description='The username to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/username}' />
+      </property>
+      <property name='password'>
+        <property-ui type='secureBox' label='Password' description='The password to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/password}' />
+      </property>
+      <property name='passwordscript'>
+        <property-ui type='textBox' label='Password Script' description='If a property or script should be used to retrieve the password, leave it blank and put the property or script here.' default-value='${p:resource/Tibco Business Works Plugin/passwordscript}' />
+      </property>
+      <property name='appmanageExec'>
+        <property-ui type='textBox' label='AppManager Path' description='If the AppManage command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/appmanageExec}' />
+      </property>
+      <property name='buildearExec'>
+        <property-ui type='textBox' label='buildear Path' description='If the buildear command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/buildearExec}' />
+      </property>
+      <property name='projectDirPattern' required='true'>
+        <property-ui type='textBox' label='Project Directory Pattern' description='The regular expression pattern used to locate the Tibco Project directories in the current working directory.' />
+      </property>
+      <property name='archiveDirectory' required='true'>
+        <property-ui type='textBox' label='Archive Directory' description='The location of the .archive files relative to the Tibco Project directory.' />
+      </property>
+      <property name='earDirectory' required='true'>
+        <property-ui type='textBox' label='Ear Directory' description='The location to create the ear files in relative to the current working directory.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[ 
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else { 
+ properties.put("Status", "Success"); 
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_multiple_buildear.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+  <step-type name='Deploy Tibco Enterprise Archive (.ear)'>
+    <description>Deploy an ear file</description>
+    <properties>
+      <property name='username' required='true'>
+        <property-ui type='textBox' label='Username' description='The username to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/username}' />
+      </property>
+      <property name='password'>
+        <property-ui type='secureBox' label='Password' description='The password to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/password}' />
+      </property>
+      <property name='passwordscript'>
+        <property-ui type='textBox' label='Password Script' description='If a property or script should be used to retrieve the password, leave it blank and put the property or script here.' default-value='${p:resource/Tibco Business Works Plugin/passwordscript}' />
+      </property>
+      <property name='appmanageExec'>
+        <property-ui type='textBox' label='AppManager Path' description='If the AppManage command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/appmanageExec}' />
+      </property>
+      <property name='buildearExec'>
+        <property-ui type='textBox' label='buildear Path' description='If the buildear command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/buildearExec}' />
+      </property>
+      <property name='earfile' required='true'>
+        <property-ui type='textBox' label='Ear File' description='The path and name of the .ear file to deploy.' />
+      </property>
+      <property name='appname' required='true'>
+        <property-ui type='textBox' label='App to Deploy' description='The name of the application being deployed including the path.' />
+      </property>
+      <property name='domain' required='true'>
+        <property-ui type='textBox' label='Domain' description='The domain of the application being deployed.' />
+      </property>
+      <property name='additionalParameters'>
+        <property-ui type='textAreaBox' label='Additional Parameters' description='Any additional parameters to give to the AppManager command.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[ 
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else { 
+ properties.put("Status", "Success"); 
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_deploy_ear.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+  <step-type name='Deploy Multiple Tibco Enterprise Archives'>
+    <description>Deploy all Tibco .ear files in a directory.</description>
+    <properties>
+      <property name='username' required='true'>
+        <property-ui type='textBox' label='Username' description='The username to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/username}' />
+      </property>
+      <property name='password'>
+        <property-ui type='secureBox' label='Password' description='The password to use to authenitcate with AppManage.' default-value='${p:resource/Tibco Business Works Plugin/password}' />
+      </property>
+      <property name='passwordscript'>
+        <property-ui type='textBox' label='Password Script' description='If a property or script should be used to retrieve the password, leave it blank and put the property or script here.' default-value='${p:resource/Tibco Business Works Plugin/passwordscript}' />
+      </property>
+      <property name='appmanageExec'>
+        <property-ui type='textBox' label='AppManager Path' description='If the AppManage command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/appmanageExec}' />
+      </property>
+      <property name='buildearExec'>
+        <property-ui type='textBox' label='buildear Path' description='If the buildear command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/buildearExec}' />
+      </property>
+      <property name='earDirectory' required='true'>
+        <property-ui type='textBox' label='Ear Directory' description='The relative path to the directory containing the .ear files.' />
+      </property>
+      <property name='appPath' required='true'>
+        <property-ui type='textBox' label='App Path' description='The path to deploy the applications to.' />
+      </property>
+      <property name='domain' required='true'>
+        <property-ui type='textBox' label='Domain' description='The domain of the application being deployed.' />
+      </property>
+      <property name='additionalParameters'>
+        <property-ui type='textAreaBox' label='Additional Parameters' description='Any additional parameters to give to the AppManager command.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[ 
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else { 
+ properties.put("Status", "Success"); 
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_deploy_multiple_ears.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+
+  <step-type name='Create or update EMS Queues'>
+    <description>Create or update a number of EMS queues.</description>
+    <properties>
+      <property name='server' required='true'>
+        <property-ui
+            type='textBox'
+            label='Server'
+            description='The EMS server to connect to. Ex: tcp://domain.com:12345'
+            default-value='${p:resource/TibcoEMS/server}' />
+      </property>
+      <property name='username' required='true'>
+        <property-ui
+            type='textBox'
+            label='Username'
+            description='The username to use to authenitcate with the EMS server.'
+            default-value='${p:resource/TibcoEMS/username}' />
+      </property>
+      <property name='password'>
+        <property-ui
+            type='secureBox'
+            label='Password'
+            description='The password to use to authenitcate with the EMS server.'/>
+      </property>
+      <property name='passwordscript'>
+        <property-ui
+            type='textBox'
+            label='Password Script'
+            description='If a property or script should be used to retrieve the password, leave it blank and put the
+                        property or script here.'
+            default-value='${p:resource/TibcoEMS/password}' />
+      </property>
+      <property name='tibemsadminExec'>
+        <property-ui
+            type='textBox'
+            label='tibemsadmin Path'
+            description='If the tibemsadmin command is not on the path, specify its location here including the
+                        executable name.'
+            default-value='${p:resource/TibcoEMS/tibemsadminExec}' />
+      </property>
+      <property name='updateList'>
+        <property-ui
+            type='textAreaBox'
+            label='Add/Update Queues'
+            description='A newline separated list of queues to update in the form of [queue name]->[property list].
+                        Ex: myQueue->prefetch=5,secure'
+         />
+      </property>
+      <property name='updateFile'>
+        <property-ui
+            type='textBox'
+            label='Add/Update Queues from file'
+            description='The full path to a file that contains the list of queues to add/update in the format used by
+                         the Add/Update Queues field above.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else {
+ properties.put("Status", "Success");
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_ems_add_queues.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+
+  <step-type name='Create or update EMS Topics'>
+    <description>Create or update a number of EMS topics.</description>
+    <properties>
+      <property name='server' required='true'>
+        <property-ui
+            type='textBox'
+            label='Server'
+            description='The EMS server to connect to. Ex: tcp://domain.com:12345'
+            default-value='${p:resource/TibcoEMS/server}' />
+      </property>
+      <property name='username' required='true'>
+        <property-ui
+            type='textBox'
+            label='Username'
+            description='The username to use to authenitcate with the EMS server.'
+            default-value='${p:resource/TibcoEMS/username}' />
+      </property>
+      <property name='password'>
+        <property-ui
+            type='secureBox'
+            label='Password'
+            description='The password to use to authenitcate with the EMS server.'/>
+      </property>
+      <property name='passwordscript'>
+        <property-ui
+            type='textBox'
+            label='Password Script'
+            description='If a property or script should be used to retrieve the password, leave it blank and put the
+                        property or script here.'
+            default-value='${p:resource/TibcoEMS/password}' />
+      </property>
+      <property name='tibemsadminExec'>
+        <property-ui
+            type='textBox'
+            label='tibemsadmin Path'
+            description='If the tibemsadmin command is not on the path, specify its location here including the
+                        executable name.'
+            default-value='${p:resource/TibcoEMS/tibemsadminExec}' />
+      </property>
+      <property name='updateList'>
+        <property-ui
+            type='textAreaBox'
+            label='Add/Update Topics'
+            description='A newline separated list of topics to update in the form of [topic name]->[property list].
+                        Ex: myTopic->prefetch=5,secure'
+         />
+      </property>
+      <property name='updateFile'>
+        <property-ui
+            type='textBox'
+            label='Add/Update Topics from file'
+            description='The full path to a file that contains the list of topics to add/update in the format used by
+                         the Add/Update Topics field above.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else {
+ properties.put("Status", "Success");
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_ems_add_topics.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+
+  <step-type name='Create EMS JNDI Names'>
+    <description>Create a number of EMS JNDI Names.</description>
+    <properties>
+      <property name='server' required='true'>
+        <property-ui
+            type='textBox'
+            label='Server'
+            description='The EMS server to connect to. Ex: tcp://domain.com:12345'
+            default-value='${p:resource/TibcoEMS/server}' />
+      </property>
+      <property name='username' required='true'>
+        <property-ui
+            type='textBox'
+            label='Username'
+            description='The username to use to authenitcate with the EMS server.'
+            default-value='${p:resource/TibcoEMS/username}' />
+      </property>
+      <property name='password'>
+        <property-ui
+            type='secureBox'
+            label='Password'
+            description='The password to use to authenitcate with the EMS server.'/>
+      </property>
+      <property name='passwordscript'>
+        <property-ui
+            type='textBox'
+            label='Password Script'
+            description='If a property or script should be used to retrieve the password, leave it blank and put the
+                        property or script here.'
+            default-value='${p:resource/TibcoEMS/password}' />
+      </property>
+      <property name='tibemsadminExec'>
+        <property-ui
+            type='textBox'
+            label='tibemsadmin Path'
+            description='If the tibemsadmin command is not on the path, specify its location here including the
+                        executable name.'
+            default-value='${p:resource/TibcoEMS/tibemsadminExec}' />
+      </property>
+      <property name='updateList'>
+        <property-ui
+            type='textAreaBox'
+            label='Add JNDI Names'
+            description='A newline separated list of jndinames to create in the form of
+                        [jndiname]->topic|queue|jndiname [target object name].
+                        Ex: myJNDI->queue myQueue'
+         />
+      </property>
+      <property name='updateFile'>
+        <property-ui
+            type='textBox'
+            label='Add JNDI Names from file'
+            description='The full path to a file that contains the list of JNDI Names to add in the format used by
+                         the Add JNDI Names field above.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else {
+ properties.put("Status", "Success");
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_ems_add_jndinames.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+
+  <step-type name='Delete Queues'>
+    <description>Delete a number of EMS queues.</description>
+    <properties>
+      <property name='server' required='true'>
+        <property-ui
+            type='textBox'
+            label='Server'
+            description='The EMS server to connect to. Ex: tcp://domain.com:12345'
+            default-value='${p:resource/TibcoEMS/server}' />
+      </property>
+      <property name='username' required='true'>
+        <property-ui
+            type='textBox'
+            label='Username'
+            description='The username to use to authenitcate with the EMS server.'
+            default-value='${p:resource/TibcoEMS/username}' />
+      </property>
+      <property name='password'>
+        <property-ui
+            type='secureBox'
+            label='Password'
+            description='The password to use to authenitcate with the EMS server.'/>
+      </property>
+      <property name='passwordscript'>
+        <property-ui
+            type='textBox'
+            label='Password Script'
+            description='If a property or script should be used to retrieve the password, leave it blank and put the
+                        property or script here.'
+            default-value='${p:resource/TibcoEMS/password}' />
+      </property>
+      <property name='tibemsadminExec'>
+        <property-ui
+            type='textBox'
+            label='tibemsadmin Path'
+            description='If the tibemsadmin command is not on the path, specify its location here including the
+                        executable name.'
+            default-value='${p:resource/TibcoEMS/tibemsadminExec}' />
+      </property>
+      <property name='deleteList'>
+        <property-ui
+            type='textAreaBox'
+            label='Delete Queues'
+            description='A newline separated list of queues to delete.'
+         />
+      </property>
+      <property name='deleteFile'>
+        <property-ui
+            type='textBox'
+            label='Delete queues from file'
+            description='The full path to a file that contains the list of queues to delete, one per line.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else {
+ properties.put("Status", "Success");
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_ems_delete_queues.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+
+  <step-type name='Delete Topics'>
+    <description>Delete a number of EMS topics.</description>
+    <properties>
+      <property name='server' required='true'>
+        <property-ui
+            type='textBox'
+            label='Server'
+            description='The EMS server to connect to. Ex: tcp://domain.com:12345'
+            default-value='${p:resource/TibcoEMS/server}' />
+      </property>
+      <property name='username' required='true'>
+        <property-ui
+            type='textBox'
+            label='Username'
+            description='The username to use to authenitcate with the EMS server.'
+            default-value='${p:resource/TibcoEMS/username}' />
+      </property>
+      <property name='password'>
+        <property-ui
+            type='secureBox'
+            label='Password'
+            description='The password to use to authenitcate with the EMS server.'/>
+      </property>
+      <property name='passwordscript'>
+        <property-ui
+            type='textBox'
+            label='Password Script'
+            description='If a property or script should be used to retrieve the password, leave it blank and put the
+                        property or script here.'
+            default-value='${p:resource/TibcoEMS/password}' />
+      </property>
+      <property name='tibemsadminExec'>
+        <property-ui
+            type='textBox'
+            label='tibemsadmin Path'
+            description='If the tibemsadmin command is not on the path, specify its location here including the
+                        executable name.'
+            default-value='${p:resource/TibcoEMS/tibemsadminExec}' />
+      </property>
+      <property name='deleteList'>
+        <property-ui
+            type='textAreaBox'
+            label='Delete Topics'
+            description='A newline separated list of topics to delete.'
+         />
+      </property>
+      <property name='deleteFile'>
+        <property-ui
+            type='textBox'
+            label='Delete topics from file'
+            description='The full path to a file that contains the list of topics to delete, one per line.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else {
+ properties.put("Status", "Success");
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_ems_delete_topics.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+
+  <step-type name='Delete JNDI Names'>
+    <description>Delete a number of EMS JNDI Names.</description>
+    <properties>
+      <property name='server' required='true'>
+        <property-ui
+            type='textBox'
+            label='Server'
+            description='The EMS server to connect to. Ex: tcp://domain.com:12345'
+            default-value='${p:resource/TibcoEMS/server}' />
+      </property>
+      <property name='username' required='true'>
+        <property-ui
+            type='textBox'
+            label='Username'
+            description='The username to use to authenitcate with the EMS server.'
+            default-value='${p:resource/TibcoEMS/username}' />
+      </property>
+      <property name='password'>
+        <property-ui
+            type='secureBox'
+            label='Password'
+            description='The password to use to authenitcate with the EMS server.'/>
+      </property>
+      <property name='passwordscript'>
+        <property-ui
+            type='textBox'
+            label='Password Script'
+            description='If a property or script should be used to retrieve the password, leave it blank and put the
+                        property or script here.'
+            default-value='${p:resource/TibcoEMS/password}' />
+      </property>
+      <property name='tibemsadminExec'>
+        <property-ui
+            type='textBox'
+            label='tibemsadmin Path'
+            description='If the tibemsadmin command is not on the path, specify its location here including the
+                        executable name.'
+            default-value='${p:resource/TibcoEMS/tibemsadminExec}' />
+      </property>
+      <property name='deleteList'>
+        <property-ui
+            type='textAreaBox'
+            label='Delete JNDI Names'
+            description='A newline separated list of JNDI Names to delete.'
+         />
+      </property>
+      <property name='deleteFile'>
+        <property-ui
+            type='textBox'
+            label='Delete JNDI Names from file'
+            description='The full path to a file that contains the list of JNDI Names to delete, one per line.' />
+      </property>
+    </properties>
+    <post-processing><![CDATA[
+ if (properties.get("exitCode") != 0) {
+ properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+ }
+ else {
+ properties.put("Status", "Success");
+ }
+ ]]></post-processing>
+    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+      <arg value='-cp' />
+      <arg file='classes' />
+      <arg file='tibco_ems_delete_jndinames.groovy' />
+      <arg file='${PLUGIN_INPUT_PROPS}' />
+      <arg file='${PLUGIN_OUTPUT_PROPS}' />
+    </command>
+  </step-type>
+</plugin>

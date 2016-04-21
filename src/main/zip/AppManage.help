@@ -1,0 +1,58 @@
+Usage: AppManage [options] [args...]
+  (to execute a task)
+  or AppManage "-?" [options]
+  (to print detailed message of each option)
+ 
+ where options include:
+  -export export a deployment configuration file
+  -upload upload an archive
+  -config configure an application
+  If -ear is specified, upload the archive first
+  -deploy deploy an application
+  If -ear is specified, upload the archive first
+  If -deployConfig is specified, configure the application first
+  -undeploy undeploy an application
+  -delete delete an application
+  If -force is specified, undeploy the application first.
+  -start start successfully deployed service instances of an application
+  -stop gracefully shutdown successfully deployed service instances of an application
+  -kill immediately kill successfully deployed service instances of an application
+  -moveAppData Redeploy application with new location for Application Data
+  -truncate Truncate the application deployment revision
+  
+  
+Usage: AppManage -deploy -app <app> -domain <domain> [-deployconfig <file>]
+  [-ear <archive>] [-user <user> -pw <password>] [-cred <cred>]
+  [-desc <description>] [-nostart] [-nostop] [-timeout <timeout>] [-force] [-serialize]
+  (to deploy an application
+  and optionally to upload an archive if -ear is specified
+  and optionally to configure the application if -deployconfig is specified)
+ 
+ where args include:
+ <app> name of an application (case sensitive)
+  May contain folder if the application is not top level
+  Folder name should be separated by slash "/"
+  If <app> not exist, -ear must be specified to
+  upload the archive and create the application first
+ <domain> name of a domain (case sensitive)
+ <file> name of a deployment configuration file
+ <archive> name of an archive file
+ <user> name of an authorized user that has read/write permission of the application(s)
+  and read/write permission to access data of SYS_<domain>
+ <password> password of an authorized user (case sensitive)
+  Should not be encrypted
+ <cred> name of a property file containing user and encrypted password
+  Use obfuscate.exe to encrypt the property file
+  If specified, no -user and -pw should be specified
+ <description> description of this deployment
+ -nostart If specified, do not start the successfully deployed service instances
+ -nostop If specified, skip stopping running instances when an application is redeployed
+ <timeout> If specified, kill the service within <timeout> seconds
+ -force If specified, redeploy even when application is in synchronized state
+ -serialize If specified, deploy service instances one at a time instead of in parallel
+ -password User input password
+ -passwordFile User input password file
+ Example:
+ AppManage -deploy -ear myTest.ear -deployConfig c:\test\myApp.xml -app myApp -user user1 -pw user1 -domain test
+ AppManage -deploy -deployConfig c:\test\myApp.xml -app myApp -user user1 -pw user1 -domain test
+ AppManage -deploy -app myApp -user user1 -pw user1 -domain test
