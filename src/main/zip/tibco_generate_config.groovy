@@ -1,3 +1,4 @@
+import com.urbancode.air.AirPluginTool
 
 String formatCommand(def command) {
     def output = new StringBuilder()
