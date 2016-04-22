@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns='http://www.urbancode.com/PluginXMLSchema_v1' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <header>
-    <identifier id='com.urbancode.air.plugin.Tibco' version='3' name='Tibco Business Works Plugin' />
+    <identifier id='com.urbancode.air.plugin.Tibco' version='@API_VERSION@' name='Tibco Business Works Plugin' />
     <description>The Tibco Business Works integration.</description>
     <tag>Middleware/Enterprise Service Bus/Tibco</tag>
   </header>
@@ -33,12 +33,12 @@
         <property-ui type='textBox' label='Project' description='The path and name of the Tibco Project to integrate into the .ear' />
       </property>
     </properties>
-    <post-processing><![CDATA[ 
+    <post-processing><![CDATA[
  if (properties.get("exitCode") != 0) {
  properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
  }
- else { 
- properties.put("Status", "Success"); 
+ else {
+ properties.put("Status", "Success");
  }
  ]]></post-processing>
     <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
@@ -77,12 +77,12 @@
         <property-ui type='textBox' label='Ear Directory' description='The location to create the ear files in relative to the current working directory.' />
       </property>
     </properties>
-    <post-processing><![CDATA[ 
+    <post-processing><![CDATA[
  if (properties.get("exitCode") != 0) {
  properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
  }
- else { 
- properties.put("Status", "Success"); 
+ else {
+ properties.put("Status", "Success");
  }
  ]]></post-processing>
     <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
@@ -124,12 +124,12 @@
         <property-ui type='textAreaBox' label='Additional Parameters' description='Any additional parameters to give to the AppManager command.' />
       </property>
     </properties>
-    <post-processing><![CDATA[ 
+    <post-processing><![CDATA[
  if (properties.get("exitCode") != 0) {
  properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
  }
- else { 
- properties.put("Status", "Success"); 
+ else {
+ properties.put("Status", "Success");
  }
  ]]></post-processing>
     <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
@@ -171,12 +171,12 @@
         <property-ui type='textAreaBox' label='Additional Parameters' description='Any additional parameters to give to the AppManager command.' />
       </property>
     </properties>
-    <post-processing><![CDATA[ 
+    <post-processing><![CDATA[
  if (properties.get("exitCode") != 0) {
  properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
  }
- else { 
- properties.put("Status", "Success"); 
+ else {
+ properties.put("Status", "Success");
  }
  ]]></post-processing>
     <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
