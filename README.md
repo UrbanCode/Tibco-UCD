@@ -31,7 +31,7 @@ This plug-in requires version 6.1.1 or later of IBM UrbanCode Deploy.
 
 ## Installation
 Download the entire uDeploy-Tibco-Plugin and run the `gradle` command in the top level folder.
-This should compile the code and create a new distributable zip within the dist folder.
+This should compile the code and create a new distributable zip within the build/distributions folder.
 Once you have the distributable zip, no special steps are required for installation.
 See [Installing plug-ins in UrbanCode Deploy](https://developer.ibm.com/urbancode/docs/installing-plugins-ucd/#ucd).
 
