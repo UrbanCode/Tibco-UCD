@@ -2,14 +2,16 @@
 
 
 *NOTE: This is not the plugin distributable! This is the source code. To find the
-installable plugin, go https://developer.ibm.com/urbancode/plugins/ibm-urbancode-deploy/
-and search for Tibco.*
+installable plugin, either go to the [Releases](https://github.com/IBM-UrbanCode/uDeploy-Tibco-Plugin/releases)
+and download the Tibco zip or follow the installation instructions below.*
 
 ## Overview
 
 TIBCO Software empowers executives, developers, and business users with Fast Data solutions that make the right data available in real time for faster answers, better decisions, and smarter action.
 
-The UCD Tibco Plugin is an automation plugin that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the app management process for TIBCO applications by providing simplified process
+The UCD Tibco Plugin is an automation plugin that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the app management process for TIBCO applications by providing simplified process.
+
+This community plugin is based off the supported [Partner Plugin](https://developer.ibm.com/urbancode/plugin/tibco/)
 
 ## Steps
 
@@ -28,13 +30,12 @@ The UCD Tibco Plugin is an automation plugin that provides smooth and transparen
 This plug-in requires version 6.1.1 or later of IBM UrbanCode Deploy.
 
 ## Installation
-Download the entire uDeploy-Tibco-Plugin and run the "ant" command in the top level folder.
+Download the entire uDeploy-Tibco-Plugin and run the `gradle` command in the top level folder.
 This should compile the code and create a new distributable zip within the dist folder.
 Once you have the distributable zip, no special steps are required for installation.
-See Installing plug-ins in UrbanCode Deploy.
+See [Installing plug-ins in UrbanCode Deploy](https://developer.ibm.com/urbancode/docs/installing-plugins-ucd/#ucd).
 
 ## History
-Add steps to create/delete queues, topics and JNDI Names
 * Version 3
 
     Add steps to create/delete queues, topics and JNDI Names
