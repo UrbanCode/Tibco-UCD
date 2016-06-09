@@ -1,8 +1,8 @@
-# uDeploy-Tibco-Plugin
+# Tibco-UCD
 
 
 *NOTE: This is not the plugin distributable! This is the source code. To find the
-installable plugin, either go to the [Releases](https://github.com/IBM-UrbanCode/uDeploy-Tibco-Plugin/releases)
+installable plugin, either go to the [Releases](https://github.com/IBM-UrbanCode/Tibco-UCD/releases)
 and download the Tibco zip or follow the installation instructions below.*
 
 ## Overview
@@ -30,7 +30,7 @@ This community plugin is based off the supported [Partner Plugin](https://develo
 This plug-in requires version 6.1.1 or later of IBM UrbanCode Deploy.
 
 ## Installation
-Download the entire uDeploy-Tibco-Plugin and run the `gradle` command in the top level folder.
+Download the entire Tibco-UCD and run the `gradle` command in the top level folder.
 This should compile the code and create a new distributable zip within the build/distributions folder.
 Once you have the distributable zip, no special steps are required for installation.
 See [Installing plug-ins in UrbanCode Deploy](https://developer.ibm.com/urbancode/docs/installing-plugins-ucd/#ucd).
