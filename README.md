@@ -5,6 +5,9 @@
 installable plugin, either go to the [Releases](https://github.com/IBM-UrbanCode/Tibco-UCD/releases)
 and download the Tibco zip or follow the installation instructions below.*
 
+### License
+This plugin is protected under the [Eclipse Public 1.0 License](http://www.eclipse.org/legal/epl-v10.html)
+
 ## Overview
 
 TIBCO Software empowers executives, developers, and business users with Fast Data solutions that make the right data available in real time for faster answers, better decisions, and smarter action.
