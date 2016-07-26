@@ -14,7 +14,7 @@ TIBCO Software empowers executives, developers, and business users with Fast Dat
 
 The UCD Tibco Plugin is an automation plugin that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the app management process for TIBCO applications by providing simplified process.
 
-This community plugin is based off the supported [Partner Plugin](https://developer.ibm.com/urbancode/plugin/tibco/)
+This community plugin is supported on a best effort basis. For a commercially supported integration, please see the [Partner Plugin](https://developer.ibm.com/urbancode/plugin/tibco/) provided by ScaleFocus.
 
 ## Steps
 
