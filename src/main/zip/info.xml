@@ -39,6 +39,9 @@
       <release-note plugin-version="3">
       Add steps to create/delete queues, topics and JNDI Names
       </release-note>
-
+      <release-note plugin-version="4">
+      Add Travis CI support
+      Added missing groovy-plugin-utils-1.0.jar to classpath.
+      </release-note>
   </release-notes>
 </pluginInfo>

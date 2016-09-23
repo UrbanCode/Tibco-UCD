@@ -1,4 +1,4 @@
-# Tibco-UCD
+# IBM UrbanCode Deploy Tibco Plug-in [![Build Status](https://travis-ci.org/IBM-UrbanCode/Tibco-UCD.svg?branch=master)](https://travis-ci.org/IBM-UrbanCode/Tibco-UCD)
 
 
 *NOTE: This is not the plugin distributable! This is the source code. To find the
@@ -12,33 +12,40 @@ This plugin is protected under the [Eclipse Public 1.0 License](http://www.eclip
 
 TIBCO Software empowers executives, developers, and business users with Fast Data solutions that make the right data available in real time for faster answers, better decisions, and smarter action.
 
-The UCD Tibco Plugin is an automation plugin that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the app management process for TIBCO applications by providing simplified process.
+The IBM UrbanCode Deploy Tibco Plug-in is an automation plug-in that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the application management process for TIBCO applications by providing simplified process.
 
-This community plugin is supported on a best effort basis. For a commercially supported integration, please see the [Partner Plugin](https://developer.ibm.com/urbancode/plugin/tibco/) provided by ScaleFocus.
+This community plug-in is supported on a best effort basis. For a commercially supported integration, please see the [Partner Plugin](https://developer.ibm.com/urbancode/plugin/tibco/) provided by ScaleFocus.
 
 ## Steps
 
-* Build Tibco Enterprise Archive (.ear)
 * Build Multiple Tibco Enterprise Archives
-* Deploy Tibco Enterprise Archive (.ear)
-* Deploy Multiple Tibco Enterprise Archives
+* Build Tibco Enterprise Archive (.ear)
+* Create EMS JNDI Names
 * Create or update EMS Queues
 * Create or update EMS Topics
-* Create EMS JNDI Names
+* Delete JNDI Names
 * Delete Queues
 * Delete Topics
-* Delete JNDI Names
+* Deploy Multiple Tibco Enterprise Archives
+* Deploy Tibco Enterprise Archive (.ear)
 
 ## Compatibility
 This plug-in requires version 6.1.1 or later of IBM UrbanCode Deploy.
 
-## Installation
+## Build
 Download the entire Tibco-UCD and run the `gradle` command in the top level folder.
 This should compile the code and create a new distributable zip within the build/distributions folder.
+
+## Installation
 Once you have the distributable zip, no special steps are required for installation.
 See [Installing plug-ins in UrbanCode Deploy](https://developer.ibm.com/urbancode/docs/installing-plugins-ucd/#ucd).
 
 ## History
+* Version 4
+
+    Travis CI Support.
+    Added missing groovy-plugin-utils-1.0.jar to classpath.
+
 * Version 3
 
     Add steps to create/delete queues, topics and JNDI Names

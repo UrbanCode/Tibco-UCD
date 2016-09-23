@@ -26,4 +26,7 @@
     <migrate-command name="Create or update EMS Queues">
     </migrate-command>
   </migrate>
+
+  <migrate to-version="4">
+  </migrate>
 </plugin-upgrade>
