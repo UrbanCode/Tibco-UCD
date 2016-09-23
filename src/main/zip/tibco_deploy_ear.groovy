@@ -14,13 +14,13 @@ final def out = System.out
 final def apTool = new AirPluginTool(this.args[0], this.args[1])
 final def stepProps = apTool.getStepProperties()
 
-final def appmanage = stepProps['appmanageExec'] ? stepProps['appmanageExec'] : "AppManage"
+final def appmanage = stepProps['appmanageExec'] ?: "AppManage"
 final def earfile = stepProps['earfile']
 final def appname = stepProps['appname']
 final def domain = stepProps['domain']
 final def additionalParameters = stepProps['additionalParameters'].split("\\s")
 final def username = stepProps['username']
-final def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
+final def password = stepProps['password'] ?: stepProps['passwordscript']
 
 def deployCommand = []
 deployCommand.add(appmanage)
@@ -40,7 +40,7 @@ for (def param in additionalParameters) {
     if (param.trim()) deployCommand.add(param)
 }
 
-out.println "Build ear command: " + formatCommandForOutput(deployCommand)
+out.println "Deploying ear command: " + formatCommandForOutput(deployCommand)
 
 def process = deployCommand.execute()
 process.consumeProcessOutput(out,out)

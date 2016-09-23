@@ -29,4 +29,12 @@
 
   <migrate to-version="4">
   </migrate>
+
+  <migrate to-version="5">
+    <migrate-command name="Build Tibco Enterprise Archive (.ear)">
+        <migrate-properties>
+                <migrate-property name="archive" default=""/>
+        </migrate-properties>
+    </migrate-command>
+  </migrate>
 </plugin-upgrade>

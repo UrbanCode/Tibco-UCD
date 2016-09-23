@@ -14,7 +14,7 @@ final def out = System.out
 final def apTool = new AirPluginTool(this.args[0], this.args[1])
 final def stepProps = apTool.getStepProperties()
 
-final def buildear = stepProps['buildearExec'] ? stepProps['buildearExec'] : "buildear"  
+final def buildear = stepProps['buildearExec'] ?: "buildear"
 final def archive = stepProps['archive']
 final def earfile = new File(stepProps['earfile'])
 final def project = new File(stepProps['project'])
@@ -24,8 +24,10 @@ def buildearDir = new File(buildear).getParentFile()
 def buildearCommand = []
 buildearCommand.add(buildear)
 buildearCommand.add("-s")
-buildearCommand.add("-ear")
-buildearCommand.add(archive)
+if (archive) {
+    buildearCommand.add("-ear")
+    buildearCommand.add(archive)
+}
 buildearCommand.add("-o")
 buildearCommand.add(earfile.getAbsolutePath())
 buildearCommand.add("-p")

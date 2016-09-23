@@ -23,8 +23,8 @@
       <property name='buildearExec'>
         <property-ui type='textBox' label='buildear Path' description='If the buildear command is not on the path, specify its location here.' default-value='${p:resource/Tibco Business Works Plugin/buildearExec}' />
       </property>
-      <property name='archive' required='true'>
-        <property-ui type='textBox' label='Archive File' description='The path and name of the archive to generate the .ear from.' />
+      <property name='archive'>
+        <property-ui type='textBox' label='Archive File' description="The path and name of the archive to generate the .ear from. If you do not specify an '-ear' argument, the tool will create a full project ear packaging all adapters in their own Adapter Archives, and all process definitions in a single Process Archive. View the 'buildear' utility documentation for more information." />
       </property>
       <property name='earfile' required='true'>
         <property-ui type='textBox' label='Ear File' description='The path and name of the Tibco Enterprise Archive file to generate. Should end in .ear' />
@@ -41,7 +41,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_buildear.groovy' />
@@ -85,7 +85,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_multiple_buildear.groovy' />
@@ -132,7 +132,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_deploy_ear.groovy' />
@@ -179,7 +179,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_deploy_multiple_ears.groovy' />
@@ -251,7 +251,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_ems_add_queues.groovy' />
@@ -323,7 +323,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_ems_add_topics.groovy' />
@@ -396,7 +396,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_ems_add_jndinames.groovy' />
@@ -466,7 +466,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_ems_delete_queues.groovy' />
@@ -536,7 +536,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_ems_delete_topics.groovy' />
@@ -606,7 +606,7 @@
  properties.put("Status", "Success");
  }
  ]]></post-processing>
-    <command program='${agent:env/GROOVY_HOME}/bin/groovy'>
+    <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
       <arg file='lib/groovy-plugin-utils-1.0.jar' />
       <arg file='tibco_ems_delete_jndinames.groovy' />
