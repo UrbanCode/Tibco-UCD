@@ -46,7 +46,7 @@ repositories {
 
 dependencies {
     // groovy-plugin-utils pulls down groovy-all as a transitive dependency for the 'compile' configuration
-    compile 'com.ibm.urbancode.plugins:groovy-plugin-utils:1.0'
+    compile 'com.ibm.urbancode.plugins:groovy-plugin-utils:1.2'
     // This compiles the i18n-scraper script
     compile localGroovy()
     // compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.6'

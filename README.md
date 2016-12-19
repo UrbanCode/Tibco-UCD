@@ -1,4 +1,4 @@
-# IBM UrbanCode Deploy Tibco Plug-in [![Build Status](https://travis-ci.org/IBM-UrbanCode/Tibco-UCD.svg?branch=master)](https://travis-ci.org/IBM-UrbanCode/Tibco-UCD)
+# IBM UrbanCode Deploy TIBCO Plug-in [![Build Status](https://travis-ci.org/IBM-UrbanCode/Tibco-UCD.svg?branch=master)](https://travis-ci.org/IBM-UrbanCode/Tibco-UCD)
 
 
 *NOTE: This is not the plugin distributable! This is the source code. To find the
@@ -12,7 +12,7 @@ This plugin is protected under the [Eclipse Public 1.0 License](http://www.eclip
 
 TIBCO Software empowers executives, developers, and business users with Fast Data solutions that make the right data available in real time for faster answers, better decisions, and smarter action.
 
-The IBM UrbanCode Deploy Tibco Plug-in is an automation plug-in that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the application management process for TIBCO applications by providing simplified process.
+The IBM UrbanCode Deploy TIBCO Plug-in is an automation plug-in that provides smooth and transparent interaction between TIBCO Administrator and IBM UrbanCode Deploy tool. It automates the application management process for TIBCO applications by providing simplified process.
 
 This community plug-in is supported on a best effort basis. For a commercially supported integration, please see the [Partner Plugin](https://developer.ibm.com/urbancode/plugin/tibco/) provided by ScaleFocus.
 
@@ -30,7 +30,7 @@ This community plug-in is supported on a best effort basis. For a commercially s
 * Deploy Tibco Enterprise Archive (.ear)
 
 ## Compatibility
-This plug-in requires version 6.1.1 or later of IBM UrbanCode Deploy.
+This plug-in requires version 6.1.1 or later of IBM UrbanCode Deploy and version 5.7 or later of TIBCO.
 
 ## Build
 Download the entire Tibco-UCD and run the `gradle` command in the top level folder.
