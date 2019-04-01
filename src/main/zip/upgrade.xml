@@ -37,4 +37,7 @@
         </migrate-properties>
     </migrate-command>
   </migrate>
+
+  <migrate to-version="6" />
+
 </plugin-upgrade>

@@ -47,5 +47,8 @@
           Groovy bin location is now the GROOVY_HOME property.
           The 'Archive' property in Build Tibco Enterprise Archive (.ear) is no longer required.
       </release-note>
+      <release-note plugin-version="6">
+          Fixed groovy-2.4.15 'collectAll' regression.
+      </release-note>
   </release-notes>
 </pluginInfo>

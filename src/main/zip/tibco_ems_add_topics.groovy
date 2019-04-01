@@ -67,7 +67,7 @@ if ((updateList != null && updateList.length() > 0) || (updateFile != null && up
     def processLine = { String line ->
         if (line != null && line.trim().length() > 0) {
             println "------------------------------------------------------------"
-            def topicInfo = (line.split('->', 2) as List).collectAll{it.trim()}
+            def topicInfo = (line.split('->', 2) as List).collectNested{it.trim()}
             if (topicInfo.size() != 2) {
                 println "    invalid input line: $line"
                 hasErrors = true
