@@ -17,3 +17,4 @@ plugin-build.xml
 /dist
 /lib
 /ecbin
+/bin/
