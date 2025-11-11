@@ -1,20 +1,21 @@
-import com.urbancode.air.AirPluginTool
 import com.urbancode.air.plugin.Tibco.TibcoHelper
+import com.urbancode.air.plugin.helpers.NewAirPluginTool
 
-final def apTool = new AirPluginTool(args[0], args[1])
-final def stepProps = apTool.getStepProperties()
+def apTool = new NewAirPluginTool(args[0], args[1])
+def stepProps = apTool.getStepProperties()
 
-final def QUEUE_LIST_START_TOKEN = 'Queue Name'
-final def QUEUE_LIST_END_TOKEN = 'Command: quit'
-final def QUEUE_DELETE_START_TOKEN = 'Command: delete queue'
-final def QUEUE_DELETE_END_TOKEN = 'Command: commit'
+def QUEUE_LIST_START_TOKEN = 'Queue Name'
+def QUEUE_LIST_END_TOKEN = 'Command: quit'
+def QUEUE_DELETE_START_TOKEN = 'Command: delete queue'
+def QUEUE_DELETE_END_TOKEN = 'Command: commit'
 
-final def server = stepProps['server']
-final def username = stepProps['username']
-final def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
-final def tibemsadminExec = stepProps['tibemsadminExec']
-final def deleteList = stepProps['deleteList']?.trim()
-final def deleteFileName = stepProps['deleteFile']
+def server = stepProps['server']
+def username = stepProps['username']
+def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
+def tibemsadminExec = stepProps['tibemsadminExec']
+def deleteList = stepProps['deleteList']?.trim()
+def deleteFileName = stepProps['deleteFile']
+
 def File deleteFile
 if (deleteFileName != null && deleteFileName.trim().length() > 0) {
     deleteFile = new File(deleteFileName)

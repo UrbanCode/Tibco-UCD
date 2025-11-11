@@ -1,15 +1,15 @@
-import com.urbancode.air.AirPluginTool;
+import com.urbancode.air.plugin.helpers.NewAirPluginTool;
 
-final def out = System.out
-final def apTool = new AirPluginTool(this.args[0], this.args[1])
-final def stepProps = apTool.getStepProperties()
+def out = System.out
+def apTool = new NewAirPluginTool(this.args[0], this.args[1])
+def stepProps = apTool.getStepProperties()
 
-final def earDirectory = stepProps['earDirectory']
-final def appPath = stepProps['appPath']
-final def domain = stepProps['domain']
-final def appmanage = stepProps['appmanageExec'] ? stepProps['appmanageExec'] : "AppManage"
-final def username = stepProps['username']
-final def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
+def earDirectory = stepProps['earDirectory']
+def appPath = stepProps['appPath']
+def domain = stepProps['domain']
+def appmanage = stepProps['appmanageExec'] ? stepProps['appmanageExec'] : "AppManage"
+def username = stepProps['username']
+def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
 
 def earDirFile = new File(earDirectory);
 def earFilePattern = ~/.*\.ear/

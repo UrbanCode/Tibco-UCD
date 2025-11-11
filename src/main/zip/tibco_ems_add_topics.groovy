@@ -1,22 +1,23 @@
-import com.urbancode.air.AirPluginTool
 import com.urbancode.air.plugin.Tibco.TibcoHelper
+import com.urbancode.air.plugin.helpers.NewAirPluginTool
 
-final def apTool = new AirPluginTool(args[0], args[1])
-final def stepProps = apTool.getStepProperties()
+def apTool = new NewAirPluginTool(args[0], args[1])
+def stepProps = apTool.getStepProperties()
 
-final def TOPIC_LIST_START_TOKEN = 'Topic Name'
-final def TOPIC_LIST_END_TOKEN = 'Command: quit'
-final def TOPIC_CREATE_START_TOKEN = 'Command: create topic'
-final def TOPIC_CREATE_END_TOKEN = 'Command: commit'
-final def TOPIC_UPDATE_START_TOKEN = 'Command: addprop topic'
-final def TOPIC_UPDATE_END_TOKEN = 'Command: commit'
+def TOPIC_LIST_START_TOKEN = 'Topic Name'
+def TOPIC_LIST_END_TOKEN = 'Command: quit'
+def TOPIC_CREATE_START_TOKEN = 'Command: create topic'
+def TOPIC_CREATE_END_TOKEN = 'Command: commit'
+def TOPIC_UPDATE_START_TOKEN = 'Command: addprop topic'
+def TOPIC_UPDATE_END_TOKEN = 'Command: commit'
 
-final def server = stepProps['server']
-final def username = stepProps['username']
-final def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
-final def tibemsadminExec = stepProps['tibemsadminExec']
-final def updateList = stepProps['updateList']?.trim()
-final def updateFileName = stepProps['updateFile']
+def server = stepProps['server']
+def username = stepProps['username']
+def password = stepProps['password'] ? stepProps['password'] : stepProps['passwordscript']
+def tibemsadminExec = stepProps['tibemsadminExec']
+def updateList = stepProps['updateList']?.trim()
+def updateFileName = stepProps['updateFile']
+
 def File updateFile
 if (updateFileName != null && updateFileName.trim().length() > 0) {
     updateFile = new File(updateFileName)

@@ -43,7 +43,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--        <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_buildear.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -87,7 +88,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--        <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_multiple_buildear.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -134,7 +136,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_deploy_ear.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -181,7 +184,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_deploy_multiple_ears.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -253,7 +257,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_ems_add_queues.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -325,7 +330,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_ems_add_topics.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -398,7 +404,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_ems_add_jndinames.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -468,7 +475,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_ems_delete_queues.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -538,7 +546,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_ems_delete_topics.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
@@ -608,7 +617,8 @@
  ]]></post-processing>
     <command program='${GROOVY_HOME}/bin/groovy'>
       <arg value='-cp' />
-      <arg file='lib/groovy-plugin-utils-1.2.jar' />
+<!--      <arg file='lib/groovy-plugin-utils-1.2.jar' />-->
+      <arg file='classes' />
       <arg file='tibco_ems_delete_jndinames.groovy' />
       <arg file='${PLUGIN_INPUT_PROPS}' />
       <arg file='${PLUGIN_OUTPUT_PROPS}' />
