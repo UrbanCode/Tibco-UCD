@@ -16,13 +16,6 @@ def tibemsadminExec = stepProps['tibemsadminExec']
 def deleteList = stepProps['deleteList']?.trim()
 def deleteFileName = stepProps['deleteFile']
 
-println ' Data: server: ' + server
-println ' Data: username: ' + username
-println ' Data: password: ' + password
-println ' Data: tibemsadminExec: ' + tibemsadminExec
-println ' Data: deleteList: ' + deleteList
-println ' Data: deleteFileName: ' + deleteFileName
-
 def File deleteFile
 if (deleteFileName != null && deleteFileName.trim().length() > 0) {
     deleteFile = new File(deleteFileName)
