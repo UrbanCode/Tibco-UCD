@@ -1,4 +1,4 @@
-import com.urbancode.air.AirPluginTool
+import com.urbancode.air.plugin.helpers.NewAirPluginTool
 
 String formatCommand(def command) {
     def output = new StringBuilder()
@@ -11,7 +11,7 @@ String formatCommand(def command) {
 
 final def out = System.out
 
-final def apTool = new AirPluginTool(this.args[0], this.args[1])
+final def apTool = new NewAirPluginTool(this.args[0], this.args[1])
 final def stepProps = apTool.getStepProperties()
 
 final def appmanage = stepProps['appmanageExec'] ? stepProps['appmanageExec'] : "AppManage"

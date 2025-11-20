@@ -1,4 +1,4 @@
-import com.urbancode.air.AirPluginTool;
+import com.urbancode.air.plugin.helpers.NewAirPluginTool
 
 String formatCommandForOutput(def command) {
     def output = new StringBuilder()
@@ -9,15 +9,15 @@ String formatCommandForOutput(def command) {
     return output.toString()
 }
 
-final def out = System.out
+def out = System.out
 
-final def apTool = new AirPluginTool(this.args[0], this.args[1])
-final def stepProps = apTool.getStepProperties()
+def apTool = new NewAirPluginTool(this.args[0], this.args[1])
+def stepProps = apTool.getStepProperties()
 
-final def buildear = stepProps['buildearExec'] ?: "buildear"
-final def archive = stepProps['archive']
-final def earfile = new File(stepProps['earfile'])
-final def project = new File(stepProps['project'])
+def buildear = stepProps['buildearExec'] ?: "buildear"
+def archive = stepProps['archive']
+def earfile = new File(stepProps['earfile'])
+def project = new File(stepProps['project'])
 
 def buildearDir = new File(buildear).getParentFile()
 

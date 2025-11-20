@@ -1,4 +1,4 @@
-import com.urbancode.air.AirPluginTool;
+import com.urbancode.air.plugin.helpers.NewAirPluginTool
 
 String formatCommandForOutput(def command) {
     def output = new StringBuilder()
@@ -9,18 +9,18 @@ String formatCommandForOutput(def command) {
     return output.toString()
 }
 
-final def out = System.out
+def out = System.out
 
-final def apTool = new AirPluginTool(this.args[0], this.args[1])
-final def stepProps = apTool.getStepProperties()
+def apTool = new NewAirPluginTool(this.args[0], this.args[1])
+def stepProps = apTool.getStepProperties()
 
-final def appmanage = stepProps['appmanageExec'] ?: "AppManage"
-final def earfile = stepProps['earfile']
-final def appname = stepProps['appname']
-final def domain = stepProps['domain']
-final def additionalParameters = stepProps['additionalParameters'].split("\\s")
-final def username = stepProps['username']
-final def password = stepProps['password'] ?: stepProps['passwordscript']
+def appmanage = stepProps['appmanageExec'] ?: "AppManage"
+def earfile = stepProps['earfile']
+def appname = stepProps['appname']
+def domain = stepProps['domain']
+def additionalParameters = stepProps['additionalParameters'].split("\\s")
+def username = stepProps['username']
+def password = stepProps['password'] ?: stepProps['passwordscript']
 
 def deployCommand = []
 deployCommand.add(appmanage)
